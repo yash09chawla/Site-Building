@@ -31,8 +31,10 @@
  *  `/legal` until Part 6.
  */
 
-/** A legacy path and its successor, both written WITHOUT a locale prefix and
- *  without a trailing slash. `"/"` means the locale home. */
+/** A legacy path and its successor. `from` is written WITHOUT a locale prefix
+ *  and without a trailing slash. `to` is the same, unless the successor left
+ *  this host — then it is an absolute URL and `redirects.ts` does not prefix
+ *  a locale onto it. `"/"` means the locale home. */
 export type LegacyRoute = {
   readonly from: string;
   readonly to: string;
@@ -172,6 +174,10 @@ export function localeContractDrift(
  *  yet makes them permanently dead for anyone who hits one first. */
 export const APP_HOST = "https://app.helloverify.com";
 
+/** Where `/products/hellov` lives now. Kept as its own constant because
+ *  `lib/hellostaff/live.ts` cannot be imported from this file. */
+export const HELLOV_STORE = "https://devhellostaff.helloverify.com/";
+
 /** Old immigration-applicant CTA (`immigrationMigrationService.base.json`).
  *  Visa screening is a separate product — not the www cart. */
 export const VISA_HOST = "https://visa.helloverify.com/";
@@ -216,7 +222,7 @@ export const LEGACY_ROUTES: readonly LegacyRoute[] = [
     why: "Part 1 — old App.tsx path is canonical",
   },
   { from: "/governments/trade", to: "/solutions/trade-authorities", why: "Part 1 — old App.tsx path is canonical" },
-  { from: "/individuals/hellov", to: "/products/hellov", why: "Part 1 — old App.tsx path is canonical" },
+  { from: "/individuals/hellov", to: HELLOV_STORE, why: "HelloV moved to the Hello Staff store" },
   { from: "/individuals/immigration", to: "/products/immigration", why: "Part 1 — old App.tsx path is canonical" },
   { from: "/platform/technology", to: "/technology", why: "Part 1 — old App.tsx path is canonical" },
   { from: "/platform/coverage", to: "/international", why: "Part 1 — old App.tsx path is canonical" },
@@ -234,10 +240,10 @@ export const LEGACY_ROUTES: readonly LegacyRoute[] = [
   { from: "/kyc", to: "/products/customer-kyc", why: "web.config rule Redirect Obsolete Kyc Paths" },
   { from: "/products/trust-safety", to: "/products/customer-kyc", why: "web.config rule Redirect Obsolete Kyc Paths" },
   { from: "/solutions/business-trade", to: "/solutions/trade-authorities", why: "web.config rule Redirect Obsolete Trade Authorities" },
-  { from: "/consumer", to: "/products/hellov", why: "web.config rule Redirect Obsolete Consumer Paths" },
-  { from: "/consumer/basic", to: "/products/hellov", why: "web.config rule Redirect Obsolete Consumer Paths" },
-  { from: "/consumer/premium", to: "/products/hellov", why: "web.config rule Redirect Obsolete Consumer Paths" },
-  { from: "/premium/consumer-service", to: "/products/hellov", why: "web.config rule Redirect Obsolete Consumer Paths" },
+  { from: "/consumer", to: HELLOV_STORE, why: "web.config rule Redirect Obsolete Consumer Paths" },
+  { from: "/consumer/basic", to: HELLOV_STORE, why: "web.config rule Redirect Obsolete Consumer Paths" },
+  { from: "/consumer/premium", to: HELLOV_STORE, why: "web.config rule Redirect Obsolete Consumer Paths" },
+  { from: "/premium/consumer-service", to: HELLOV_STORE, why: "web.config rule Redirect Obsolete Consumer Paths" },
   { from: "/visa-screening", to: "/products/immigration", why: "web.config rule Redirect Obsolete Visa Screening" },
   {
     from: "/premium/immigration-applicant",

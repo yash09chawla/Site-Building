@@ -31,6 +31,7 @@ import { readFile, stat } from "node:fs/promises";
 
 import { POSTS } from "../../src/lib/content/posts.ts";
 import { SAME_AS, CONTACT } from "../../src/lib/content/company.ts";
+import { SITE_URL } from "../../src/lib/seo/site.ts";
 import { htmlPages, visibleText, decodeEntities } from "./build-output.mjs";
 
 const root = new URL("../../", import.meta.url);
@@ -66,7 +67,6 @@ const SERVICE_PAGES = new Set([
   "/en/employee-verification",
   "/en/products/customer-kyc",
   "/en/products/certifier",
-  "/en/products/hellov",
   "/en/solutions/health-authorities",
   "/en/solutions/immigration-authorities",
   "/en/solutions/manpower-and-education-authorities",
@@ -360,9 +360,17 @@ for (const [path, file] of pageFiles) {
     } else if (intermediateWithoutHref) {
       crumbMismatch.push(`${path}: BreadcrumbList emitted for a trail with an unlinked rung`);
     } else {
+      const siteOrigin = new URL(SITE_URL).origin;
       const emitted = bc.itemListElement.map((li) => ({
         name: li.name,
-        ...(li.item ? { href: new URL(li.item).pathname } : {}),
+        ...(li.item
+          ? {
+              href:
+                new URL(li.item).origin === siteOrigin
+                  ? new URL(li.item).pathname
+                  : li.item,
+            }
+          : {}),
       }));
       const want = crumbs.map((c, i) =>
         i === crumbs.length - 1 ? { name: c.name } : { name: c.name, href: c.href },

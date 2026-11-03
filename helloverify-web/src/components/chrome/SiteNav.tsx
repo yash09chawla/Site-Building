@@ -20,7 +20,7 @@ import { getLocale } from "next-intl/server";
 import { NavAuth } from "@/components/auth/NavAuth";
 import { Logo } from "@/components/brand/Logo";
 import { AppLink } from "@/components/chrome/AppLink";
-import { HELLOSTAFF_LIVE } from "@/lib/hellostaff/live";
+import { HELLOSTAFF_HOME, HELLOSTAFF_LIVE } from "@/lib/hellostaff/live";
 import { LocaleSwitch } from "@/components/chrome/LocaleSwitch";
 import { MenuClose } from "@/components/chrome/MenuClose";
 import { NavDropdown } from "@/components/chrome/NavDropdown";
@@ -82,7 +82,7 @@ const PRODUCTS: Item[] = [
   { id: "bgvSmb", href: "/products/bgv-smb", icon: "store" },
   { id: "certifier", href: "/products/certifier", icon: "badge" },
   { id: "immigrationDocs", href: "/products/immigration", icon: "bank" },
-  { id: "hellov", href: "/products/hellov", icon: "chat" },
+  { id: "hellov", href: HELLOSTAFF_HOME, icon: "chat" },
   { id: "trust", href: "/products/customer-kyc", icon: "shield" },
 ];
 

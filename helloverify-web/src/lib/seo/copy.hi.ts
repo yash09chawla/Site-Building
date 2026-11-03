@@ -107,11 +107,6 @@ export const STATIC_HI: Record<StaticSeoPath, PageCopy> = {
     description:
       "पहचान, शिक्षा, रोजगार और आपराधिक रिकॉर्ड के सटीक सत्यापन के माध्यम से वीज़ा अनुपालन सुनिश्चित करने वाली व्यापक वेरिफिकेशन समाधानों के साथ व्यवसाय एवं व्यापार प्राधिकरणों को सशक्त बनाना — धोखाधड़ी और परिचालन जोखिम को कम करना।",
   },
-  "/products/hellov": {
-    title: "सुनिश्चित करें कि आप और आपका परिवार सुरक्षित हैं! — HelloVerify",
-    description:
-      "HelloVerify द्वारा WhatsApp पर आसान वेरिफिकेशन।",
-  },
   "/products/immigration": {
     title: "आवेदक की प्री‑स्क्रीनिंग — HelloVerify",
     description:

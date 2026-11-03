@@ -7,13 +7,11 @@
     The words are rendered here on the server; `./ConsumerShopStage` owns
     the state. The statement, QR steps and WhatsApp phone that sat under the
     panels came off on 30 Sep 2026; `blocks/HelloVPhone` still plays on
-    `/products/hellov`. */
+    the Hello Staff store. */
 import { copy } from "@/lib/copy/request";
 import { SECTIONS } from "@/lib/copy/sections";
-import { localise } from "@/lib/i18n/href";
-import { liveBuyUrl } from "@/lib/hellostaff/live";
+import { HELLOSTAFF_HOME, liveBuyUrl } from "@/lib/hellostaff/live";
 import { tint } from "@/lib/img";
-import { getLocale } from "next-intl/server";
 import "@/app/v2/consumer.css";
 import { ConsumerShopStage, type ShopService } from "./ConsumerShopStage";
 
@@ -49,8 +47,6 @@ const SERVICES: { id: ServiceKey; src: string; pos: string; posOn?: string }[] =
 export async function ConsumerShop() {
   const all = (await copy(SECTIONS)).consumer;
   const t = all.shop;
-  const locale = await getLocale();
-
   const services: ShopService[] = SERVICES.map(({ id, src, pos, posOn }, i) => {
     const s = t.services[id];
     const price = "price" in s ? s.price : undefined;
@@ -99,7 +95,7 @@ export async function ConsumerShop() {
           buy: t.buy,
           pick: t.steps.s2.t,
         }}
-        buyHref={localise("/products/hellov", locale)}
+        buyHref={HELLOSTAFF_HOME}
       />
     </div>
   );

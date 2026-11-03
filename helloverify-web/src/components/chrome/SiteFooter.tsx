@@ -21,6 +21,7 @@ import {
   type FooterHref,
 } from "@/lib/copy/chrome";
 import { copy } from "@/lib/copy/request";
+import { HELLOSTAFF_HOME } from "@/lib/hellostaff/live";
 import { Arrow } from "@/components/brand/Arrow";
 // Homepage v2's footer treatment, one sheet like every v2 section. Imported
 // here, so it rides with the footer onto all 56 routes; it is desktop-only
@@ -198,12 +199,15 @@ export async function SiteFooter() {
                 {t.cols[c.k]}
                 <i aria-hidden="true">{String(c.links.length).padStart(2, "0")}</i>
               </div>
-              {c.links.map((href) => (
-                <AppLink key={href + t.links[href]} href={href}>
+              {c.links.map((href) => {
+                const dest = href === "/products/hellov" ? HELLOSTAFF_HOME : href;
+                return (
+                <AppLink key={dest + t.links[href]} href={dest}>
                   {t.links[href]}
                   <span className="fz-arr"><Arrow size="14" /></span>
                 </AppLink>
-              ))}
+                );
+              })}
             </div>
           ))}
         </div>

@@ -19,6 +19,7 @@ import { HS_SERVICES, hsService } from "@/lib/hellostaff/catalog";
 import { DEMO_OTP } from "@/lib/hellostaff/demo";
 import { helloStaffLive } from "@/lib/hellostaff/env";
 import { localise } from "@/lib/i18n/href";
+import { HELLOSTAFF_HOME } from "@/lib/hellostaff/live";
 import { absoluteUrl } from "@/lib/seo/site";
 
 export const dynamicParams = false;
@@ -49,13 +50,13 @@ export default async function HelloStaffVerifyPage({ params }: { params: Params 
   const t = await copy(HELLOSTAFF);
 
   return (
-    <PageShell crumbs={[{ label: "HelloV", href: "/products/hellov" }, { label: t.crumb }]} closing={false} showSignUp={false}>
+    <PageShell crumbs={[{ label: "HelloV", href: HELLOSTAFF_HOME }, { label: t.crumb }]} closing={false} showSignUp={false}>
       <div className="wrap ma-page">
         <HelloStaffFlow
           t={t}
           service={s}
           termsHref={localise("/legal/terms-of-service", locale)}
-          hellovHref={localise("/products/hellov", locale)}
+          hellovHref={HELLOSTAFF_HOME}
           demoCode={helloStaffLive() ? null : DEMO_OTP}
         />
       </div>

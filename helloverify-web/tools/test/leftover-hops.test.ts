@@ -1,7 +1,7 @@
 /** Part 8: marketing CTAs that still hopped to `app.helloverify.com`.
  *
- *  The individuals hub is new, so "Start a check" stays on this host
- *  (`/products/hellov`). Immigration's old applicant CTA was the visa
+ *  The individuals hub sends "Start a check" to the Hello Staff store.
+ *  Immigration's old applicant CTA was the visa
  *  portal — a different product from the www cart — so it must not be
  *  rewritten as `CommerceCta`.
  */
@@ -46,12 +46,12 @@ function leftoverAppHops(dir: string): string[] {
 console.log("1. visa portal is the old applicant host");
 check("VISA_HOST is visa.helloverify.com", VISA_HOST === "https://visa.helloverify.com/");
 
-console.log("2. individuals hub stays on this host");
+console.log("2. individuals hub goes to the Hello Staff store");
 check("hub source does not name the app", !hub.includes(APP_HOST));
-check("hub closing goes to /products/hellov", hub.includes('ctaHref: "/products/hellov"'));
+check("hub closing goes to the Hello Staff store", hub.includes("ctaHref: HELLOSTAFF_HOME"));
 check(
-  "hub hero Start a check goes to /products/hellov",
-  hub.includes('href="/products/hellov"') && hub.includes("{c.hero.cta}"),
+  "hub hero Start a check goes to the Hello Staff store",
+  hub.includes("href={HELLOSTAFF_HOME}") && hub.includes("{c.hero.cta}"),
 );
 
 console.log("3. immigration goes to the visa portal, not the app cart");

@@ -42,6 +42,12 @@ function withLocale(locale: string, path: string): string {
   return path === "/" ? `/${locale}` : `/${locale}${path}`;
 }
 
+/** An absolute `to` already names its host. Prefixing a locale would produce
+ *  `/enhttps://…`. */
+function offHost(to: string): boolean {
+  return to.startsWith("https://") || to.startsWith("http://");
+}
+
 /** An indexed locale we serve keeps its own prefix; one we do not serve is
  *  consolidated onto the default. */
 function destinationLocaleFor(locale: string): string {
@@ -97,7 +103,7 @@ export function legacyRedirects(): RedirectRule[] {
    *  that 404s would be worse than not redirecting at all. */
   for (const locale of LEGACY_LOCALES) {
     for (const { from, to } of LEGACY_ROUTES) {
-      const destination = withLocale(destinationLocaleFor(locale), to);
+      const destination = offHost(to) ? to : withLocale(destinationLocaleFor(locale), to);
       const source = withLocale(locale, from);
       rules.push({ source: `${source}/index.html`, destination, permanent: true });
       rules.push({ source, destination, permanent: true });
@@ -105,7 +111,7 @@ export function legacyRedirects(): RedirectRule[] {
   }
 
   for (const { from, to } of LEGACY_ROUTES) {
-    const destination = withLocale(DEFAULT_LOCALE, to);
+    const destination = offHost(to) ? to : withLocale(DEFAULT_LOCALE, to);
     rules.push({ source: `${from}/index.html`, destination, permanent: true });
     rules.push({ source: from, destination, permanent: true });
   }

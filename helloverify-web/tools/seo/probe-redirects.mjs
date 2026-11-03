@@ -42,6 +42,7 @@ import {
   chase,
   trace,
   assertOneHop,
+  assertOffHost,
   assertReaches,
   warn,
   report,
@@ -117,6 +118,11 @@ for (const locale of LEGACY_LOCALES) {
   const dest = SERVED_LOCALES.includes(locale) ? locale : DEFAULT_LOCALE;
   for (const { from, to } of LEGACY_ROUTES) {
     const source = from === "/" ? `/${locale}` : `/${locale}${from}`;
+    if (to.startsWith("https://")) {
+      await assertOffHost(source, to);
+      await assertOffHost(`${source}/index.html`, to);
+      continue;
+    }
     const target = to === "/" ? `/${dest}` : `/${dest}${to}`;
     await assertOneHop(source, target);
     // AUDIT A2: the same URL is also indexed with /index.html appended.
@@ -131,6 +137,11 @@ for (const locale of LEGACY_LOCALES) {
 
 console.log("\nLegacy URLs (unprefixed — backlink and typed traffic)");
 for (const { from, to } of LEGACY_ROUTES) {
+  if (to.startsWith("https://")) {
+    await assertOffHost(from, to);
+    await assertOffHost(`${from}/index.html`, to);
+    continue;
+  }
   await assertOneHop(from, to === "/" ? "/en" : `/en${to}`);
 }
 

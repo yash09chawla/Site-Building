@@ -203,12 +203,15 @@ export async function SiteFooter() {
                 {t.cols[c.k]}
                 <i aria-hidden="true">{String(c.links.length).padStart(2, "0")}</i>
               </div>
-              {c.links.map((href) => (
-                <AppLink key={href + t.links[href]} href={href}>
+              {c.links.map((href) => {
+                const dest = href === "/individuals/hellov" ? "https://devhellostaff.helloverify.com/" : href;
+                return (
+                <AppLink key={dest + t.links[href]} href={dest}>
                   {t.links[href]}
                   <span className="fz-arr"><Arrow size="14" /></span>
                 </AppLink>
-              ))}
+                );
+              })}
             </div>
           ))}
         </div>

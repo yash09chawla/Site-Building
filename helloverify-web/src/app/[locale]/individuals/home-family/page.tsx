@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 import { copyFor } from "@/lib/seo/copy";
 import type { ServiceFacts } from "@/lib/seo/schema/service";
 import { VerticalPage } from "@/components/templates/VerticalPage";
+import { HELLOSTAFF_HOME } from "@/lib/hellostaff/live";
 import { setRequestLocale } from "next-intl/server";
 import { INDIVIDUALS } from "@/lib/copy/individuals";
 import { copy } from "@/lib/copy/request";
@@ -62,8 +63,8 @@ export default async function Page({
       eyebrow={c.eyebrow}
       h1={c.h1}
       sub={c.sub}
-      primary={{ label: c.primary, href: "/products/hellov#hellov-product-tabs" }}
-      secondary={{ label: c.secondary, href: "/products/hellov?tab=single#hellov-product-tabs" }}
+      primary={{ label: c.primary, href: HELLOSTAFF_HOME }}
+      secondary={{ label: c.secondary, href: HELLOSTAFF_HOME }}
       strip={[c.strip.thirtyMin, c.strip.price, c.strip.whatsapp, c.strip.consent]}
       /* ANSWER BLOCKS (BUILD-SPEC §11a.2). Figures are the live HelloV
          catalogue — same SKUs as `/products/hellov`. No second household
@@ -124,7 +125,7 @@ export default async function Page({
         heading: c.closing.heading,
         sub: c.closing.sub,
         ctaLabel: c.closing.ctaLabel,
-        ctaHref: "/products/hellov#hellov-product-tabs",
+        ctaHref: HELLOSTAFF_HOME,
         img: "/img/people/04-nanny-gurugram.jpg",
       }}
     />

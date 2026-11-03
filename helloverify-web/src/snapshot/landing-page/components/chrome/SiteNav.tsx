@@ -75,7 +75,7 @@ const PRODUCTS: Item[] = [
   { id: "bgvSmb", href: "/business/smb", icon: "store" },
   { id: "certifier", href: "/business/certifier", icon: "badge" },
   { id: "immigrationDocs", href: "/governments/immigration", icon: "bank" },
-  { id: "hellov", href: "/individuals/hellov", icon: "chat" },
+  { id: "hellov", href: "https://devhellostaff.helloverify.com/", icon: "chat" },
   { id: "trust", href: "/business/customer-kyc", icon: "shield" },
 ];
 

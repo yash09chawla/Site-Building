@@ -95,7 +95,8 @@ export function breadcrumbList(
   for (const [i, crumb] of trail.entries()) {
     const isLast = i === trail.length - 1;
 
-    if (crumb.href !== undefined && !KNOWN_PATHS.has(crumb.href)) {
+    const external = crumb.href !== undefined && /^https?:\/\//.test(crumb.href);
+    if (crumb.href !== undefined && !external && !KNOWN_PATHS.has(crumb.href)) {
       throw new Error(
         `breadcrumbList: ${JSON.stringify(crumb.href)} is not in the route ` +
           `manifest (lib/seo/routes.ts). A breadcrumb pointing at a redirect ` +
@@ -118,7 +119,7 @@ export function breadcrumbList(
        *  giving 31 pages a second chance to name the wrong one. */
       ...(isLast || crumb.href === undefined
         ? {}
-        : { item: absoluteUrl(localise(crumb.href, locale)) }),
+        : { item: external ? crumb.href : absoluteUrl(localise(crumb.href, locale)) }),
     });
   }
 

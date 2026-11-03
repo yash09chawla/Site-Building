@@ -4,6 +4,7 @@
  *  partner. */
 import type { CSSProperties } from "react";
 import { AppLink } from "@/components/chrome/AppLink";
+import { HELLOSTAFF_HOME } from "@/lib/hellostaff/live";
 import { Arrow } from "@/components/brand/Arrow";
 import { Reveal } from "@/components/about/AboutMotion";
 import { d, Head, Icon, type IconName, type PartnerCopy } from "./partnerParts";
@@ -19,7 +20,7 @@ const SERVICES: readonly [keyof Svc["items"], IconName, 15 | 10, string][] = [
   ["international", "globe", 15, "/international"],
   ["kyc", "face", 15, "/products/customer-kyc"],
   ["certifier", "building", 15, "/products/certifier"],
-  ["hellov", "home", 10, "/products/hellov"],
+  ["hellov", "home", 10, HELLOSTAFF_HOME],
   ["instant", "bolt", 10, "/resources/checks"],
 ];
 

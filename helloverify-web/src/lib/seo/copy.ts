@@ -159,11 +159,6 @@ export const STATIC_EN = {
     description:
       "Empowering Business & Trade Authorities with comprehensive verification solutions that support visa compliance through accurate validation of identity, education, employment, and criminal records—helping reduce fraud and operational risk.",
   },
-  "/products/hellov": {
-    title: "Make Sure You and Your Family Are Safe! — HelloVerify",
-    description:
-      "Verification made easy on WhatsApp by HelloVerify.",
-  },
   "/products/immigration": {
     title: "Pre Screening Of Applicant — HelloVerify",
     description:

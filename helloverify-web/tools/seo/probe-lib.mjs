@@ -67,6 +67,17 @@ export function trace(result) {
   return result.hops.map((h) => `${h.status} -> ${h.to}`).join(" then ") || "(no redirect)";
 }
 
+/** A 308 onto another host. Do not chase it: `hop` keeps only the path, so
+ *  the next request would hit this origin's `/` instead of the other site. */
+export async function assertOffHost(source, expected) {
+  const res = await fetch(origin() + source, { redirect: "manual" });
+  check(
+    `308 ${source} -> ${expected}`,
+    res.status === 308 && res.headers.get("location") === expected,
+    `got ${res.status} -> ${res.headers.get("location")}`,
+  );
+}
+
 /** A legacy URL must 308 straight to its target, and that target must be a
  *  real page. Anything else is a chain or a 308-into-a-404. */
 export async function assertOneHop(source, expected) {

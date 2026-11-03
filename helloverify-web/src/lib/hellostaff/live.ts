@@ -5,6 +5,11 @@
 export const HELLOSTAFF_LIVE =
   process.env.HELLOSTAFF_STORE_URL?.replace(/\/$/, "") || "https://devhellostaff.helloverify.com";
 
+/** The storefront home. Every link that used to open `/products/hellov` goes
+ *  here. Same URL as `HELLOV_STORE` in `lib/seo/legacy-urls.ts` — that file
+ *  cannot import this one, so the two strings are kept in step by hand. */
+export const HELLOSTAFF_HOME = `${HELLOSTAFF_LIVE}/`;
+
 export type LiveServiceKey =
   | "driver"
   | "homeStaff"

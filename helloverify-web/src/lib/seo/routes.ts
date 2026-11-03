@@ -69,8 +69,7 @@ export const STATIC_ROUTES: readonly RouteEntry[] = [
   r("/governments/immigration/embassy-of-italy", "monthly", 0.7),
   r("/solutions/trade-authorities", "monthly", 0.8),
 
-  // Individual verticals
-  r("/products/hellov", "monthly", 0.8),
+  // Individual verticals. `/products/hellov` is not a page.
   r("/products/immigration", "monthly", 0.9),
   r("/individuals/home-family", "monthly", 0.7),
 

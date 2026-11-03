@@ -40,7 +40,7 @@ const PACKS: readonly Pack[] = [
 const PHOTOS: Record<PackId, Pick<PackPhotoProps, "src" | "focus" | "href">> = {
   blueCollar: { src: "/snapshot-landing-page/img/v2/pkg-bluecollar.jpg", focus: "50% 35%", href: "/business/smb" },
   whiteCollar: { src: "/snapshot-landing-page/img/v2/pkg-whitecollar.jpg", focus: "50% 30%", href: "/business/enterprise" },
-  driver: { src: "/snapshot-landing-page/img/v2/pkg-driver.jpg", focus: "50% 40%", href: "/individuals/hellov" },
+  driver: { src: "/snapshot-landing-page/img/v2/pkg-driver.jpg", focus: "50% 40%", href: "https://devhellostaff.helloverify.com/" },
   tradeRisk: { src: "/snapshot-landing-page/img/v2/pkg-trade.jpg", focus: "40% 40%", href: "/business/certifier" },
   vendorRisk: { src: "/snapshot-landing-page/img/v2/pkg-vendor.jpg", focus: "50% 35%", href: "/business/certifier" },
   visaHealth: { src: "/snapshot-landing-page/img/v2/pkg-visa.jpg", focus: "55% 40%", href: "/individuals/immigration" },

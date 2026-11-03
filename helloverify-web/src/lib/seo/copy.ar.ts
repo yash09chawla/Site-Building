@@ -107,11 +107,6 @@ export const STATIC_AR: Record<StaticSeoPath, PageCopy> = {
     description:
       "تمكين هيئات الأعمال والتجارة بحلول تحقق شاملة تضمن الامتثال للتأشيرات عبر التحقق الدقيق من الهوية والتعليم والخبرة الوظيفية والسجلات الجنائية — لتقليل الاحتيال والمخاطر التشغيلية.",
   },
-  "/products/hellov": {
-    title: "تأكد من أنك وعائلتك بأمان! — HelloVerify",
-    description:
-      "التحقق أصبح سهلًا على WhatsApp بواسطة HelloVerify.",
-  },
   "/products/immigration": {
     title: "الفحص المسبق للمتقدم — HelloVerify",
     description:

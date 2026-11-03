@@ -5,6 +5,7 @@ import { PageShell } from "@/components/chrome/PageShell";
 import Image from "next/image";
 import { CERT_BOX, SIZES_PATH_SPAN3 } from "@/lib/img";
 import { AppLink } from "@/components/chrome/AppLink";
+import { HELLOSTAFF_HOME } from "@/lib/hellostaff/live";
 import { setRequestLocale } from "next-intl/server";
 import { SecHead } from "@/components/chrome/SecHead";
 import { Arrow } from "@/components/brand/Arrow";
@@ -27,10 +28,10 @@ export async function generateMetadata({
  *  here. `k` rather than the href because two of the four point at the same
  *  route, which is the note `lib/copy/individuals.en.tsx` records. */
 const PATHS: readonly { k: IndividualsPathKey; href: string; span: string; img: string }[] = [
-  { k: "hellov", href: "/products/hellov", span: "span3", img: "/img/12-phone-signup.jpg" },
+  { k: "hellov", href: HELLOSTAFF_HOME, span: "span3", img: "/img/12-phone-signup.jpg" },
   { k: "immigration", href: "/products/immigration", span: "span3", img: "/img/14-visa-counter.jpg" },
   { k: "homeFamily", href: "/individuals/home-family", span: "span3", img: "/img/15-home-doorway.jpg" },
-  { k: "tenants", href: "/products/hellov", span: "span3", img: "/img/people/07-tenant-singapore.jpg" },
+  { k: "tenants", href: HELLOSTAFF_HOME, span: "span3", img: "/img/people/07-tenant-singapore.jpg" },
 ];
 
 export default async function IndividualsHub({
@@ -53,7 +54,7 @@ export default async function IndividualsHub({
         heading: c.closing.heading,
         sub: c.closing.sub,
         ctaLabel: c.closing.ctaLabel,
-        ctaHref: "/products/hellov",
+        ctaHref: HELLOSTAFF_HOME,
         img: "/img/15-home-doorway.jpg",
       }}
     >
@@ -62,8 +63,8 @@ export default async function IndividualsHub({
         <h1 className="h1">{c.hero.h1}</h1>
         <p className="sub">{c.hero.sub}</p>
         <div className="hrow">
-          <AppLink href="/products/hellov" className="btn btn-ink">{c.hero.cta}</AppLink>
-          <AppLink href="/products/hellov" className="btn btn-ghost">
+          <AppLink href={HELLOSTAFF_HOME} className="btn btn-ink">{c.hero.cta}</AppLink>
+          <AppLink href={HELLOSTAFF_HOME} className="btn btn-ghost">
             <span>{c.hero.plans}</span>
             <Arrow />
           </AppLink>

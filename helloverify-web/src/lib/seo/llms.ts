@@ -105,7 +105,6 @@ const SECTIONS: readonly { heading: string; match: (path: string) => boolean }[]
     match: (p) =>
       p === "/individuals" ||
       p.startsWith("/individuals/") ||
-      p === "/products/hellov" ||
       p === "/products/immigration",
   },
   /* `/ai` (the field case and the globe, 1 Oct 2026) is the platform's AI at

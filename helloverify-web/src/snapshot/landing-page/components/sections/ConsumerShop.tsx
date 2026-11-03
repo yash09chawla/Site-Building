@@ -10,9 +10,7 @@
 import { HelloVPhone } from "@/snapshot/landing-page/components/blocks/HelloVPhone";
 import { copy } from "@/lib/copy/request";
 import { SECTIONS } from "@/snapshot/landing-page/lib/copy/sections";
-import { localise } from "@/lib/i18n/href";
 import { tint } from "@/snapshot/landing-page/lib/img";
-import { getLocale } from "next-intl/server";
 import "@/snapshot/landing-page/app/v2/consumer.css";
 import { ConsumerShopStage, type ShopService } from "./ConsumerShopStage";
 
@@ -94,8 +92,6 @@ function qrPath(rows: string[]) {
 export async function ConsumerShop() {
   const all = (await copy(SECTIONS)).consumer;
   const t = all.shop;
-  const locale = await getLocale();
-
   const services: ShopService[] = SERVICES.map(({ id, src, pos, chat }, i) => {
     const s = t.services[id];
     const price = "price" in s ? s.price : undefined;
@@ -174,7 +170,7 @@ export async function ConsumerShop() {
           pick: t.steps.s2.t,
           motion: t.motion,
         }}
-        buyHref={localise("/individuals/hellov", locale)}
+        buyHref="https://devhellostaff.helloverify.com/"
         phones={phones}
         how={how}
       />
