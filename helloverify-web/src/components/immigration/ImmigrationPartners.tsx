@@ -1,14 +1,11 @@
-/** The old immigration page's "Our Partners" band — five marks with their
- *  labels and one CTA — shared by the authorities and applicant pages. */
+/** "Our Partners" — Latvia and Italy, with one CTA — shared by the
+ *  authorities and applicant pages. */
 import Image from "next/image";
 import { AppLink } from "@/components/chrome/AppLink";
 
 const LOGOS = {
   latvia: { src: "/img/partners/latvia.png", w: 197, h: 158 },
   italy: { src: "/img/partners/italy.png", w: 150, h: 100 },
-  britain: { src: "/img/partners/britain.png", w: 176, h: 150 },
-  switzerland: { src: "/img/partners/switzerland.png", w: 395, h: 127 },
-  zambia: { src: "/img/partners/zambia.png", w: 506, h: 160 },
 } as const;
 
 export function ImmigrationPartners({

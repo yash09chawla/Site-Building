@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import type { MomDoc } from "@/lib/mom/doc";
-import { MOM_ORG_REGISTER_PATH, MOM_REGISTER_PATH } from "@/lib/mom/paths";
+import { MOM_ORG_REGISTER_PATH } from "@/lib/mom/paths";
 
 import { MomIcon, MomLink } from "./MomBits";
 
@@ -52,9 +52,9 @@ export function MomHero({ hero, roles, locale }: { hero: MomDoc["hero"]; roles: 
           <h2>{roles.candidates.title}</h2>
           <p>{roles.candidates.body}</p>
           <div className="mom3-acts">
-            <MomLink href={MOM_REGISTER_PATH} locale={locale} className="btn btn-ink btn-sm">
+            <a className="btn btn-ink btn-sm" href={roles.candidates.primaryCta.href}>
               {roles.candidates.primaryCta.label}
-            </MomLink>
+            </a>
           </div>
         </article>
         <article className="mom3-card mom3-role">

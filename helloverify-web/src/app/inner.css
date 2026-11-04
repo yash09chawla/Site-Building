@@ -713,7 +713,7 @@ html[lang="ar"] .ic-count { letter-spacing: 0; }
   .edu3-promise .grid li { padding-inline: 0; }
   .edu3-promise .grid li:nth-child(n + 2) { margin-top: 24px; border-top: 1px solid var(--hair); }
 }
-.ptn3 { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
+.ptn3 { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 280px)); justify-content: center; gap: 20px; }
 .ptn3 li { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 22px 14px; border: 1px solid var(--hair); border-radius: 16px; background: var(--white); text-align: center; }
 .ptn3 .lg { display: flex; align-items: center; justify-content: center; height: 64px; }
 .ptn3 .lg img { width: auto; max-width: 130px; height: auto; max-height: 64px; object-fit: contain; }

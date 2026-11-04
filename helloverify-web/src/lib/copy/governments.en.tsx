@@ -396,9 +396,6 @@ export const en = {
       logos: {
         latvia: "Embassy of Latvia",
         italy: "Embassy of Italy",
-        britain: "British High Commission",
-        switzerland: "Embassy of Switzerland",
-        zambia: "Zambia Qualifications Authority",
       },
     },
     advantage: {

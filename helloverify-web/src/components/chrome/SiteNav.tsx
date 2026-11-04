@@ -87,7 +87,8 @@ const PRODUCTS: Item[] = [
 ];
 
 const PREMIUM: Item[] = [
-  { id: "premHealth", icon: "heart" },
+  // No dedicated practitioners page yet — the health-authorities solution is the destination.
+  { id: "premHealth", href: "/solutions/health-authorities", icon: "heart" },
   { id: "premImmigration", href: "/products/immigration?tab=applicant", icon: "passport" },
   { id: "premConsumer", href: HELLOSTAFF_LIVE, icon: "id", external: true },
 ];

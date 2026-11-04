@@ -382,9 +382,6 @@ export const hi: IndividualsCopy = {
       logos: {
         latvia: "लातविया दूतावास",
         italy: "इटली दूतावास",
-        britain: "ब्रिटिश उच्च आयोग",
-        switzerland: "स्विट्ज़रलैंड दूतावास",
-        zambia: "ज़ाम्बिया योग्यता प्राधिकरण",
       },
     },
     guide: {

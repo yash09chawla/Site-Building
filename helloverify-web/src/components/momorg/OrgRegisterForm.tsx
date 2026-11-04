@@ -19,7 +19,7 @@ import { momOrg } from "@/lib/mom/org/client";
 import { DEMO_CODE } from "@/lib/mom/org/demo";
 import { isOrgName, isRegNo, tidy } from "@/lib/mom/org/policy";
 import type { OrgKind } from "@/lib/mom/org/types";
-import { MOM_ORG_PATH, MOM_ORG_SIGN_IN_PATH, MOM_REGISTER_PATH } from "@/lib/mom/paths";
+import { MOM_APPLICANT_PORTAL, MOM_ORG_PATH, MOM_ORG_SIGN_IN_PATH } from "@/lib/mom/paths";
 
 import { OrgFields } from "./OrgFields";
 import { useOrgSession } from "./useOrgSession";
@@ -286,9 +286,9 @@ export function OrgRegisterForm({ t, locale, tabs }: { t: MomOrgCopy; locale: st
         </button>
         <p className="ma-lede">
           {t.register.solo}{" "}
-          <Link className="ma-link" href={localise(MOM_REGISTER_PATH, locale)}>
+          <a className="ma-link" href={MOM_APPLICANT_PORTAL}>
             {t.register.soloLink}
-          </Link>
+          </a>
         </p>
       </form>
     </div>

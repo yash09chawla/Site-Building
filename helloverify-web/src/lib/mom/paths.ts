@@ -1,6 +1,9 @@
+import { AUTHORITY_PORTALS } from "@/lib/authority/portals";
+
 /** Locale-relative paths of the MOM applicant and employer flows. */
 export const MOM_PATH = "/solutions/manpower-and-education-authorities/ministry-of-manpower";
-export const MOM_REGISTER_PATH = `${MOM_PATH}/register`;
+/** Applicant sign-up lives on the Singapore portal; this site has no register page. */
+export const MOM_APPLICANT_PORTAL = `${AUTHORITY_PORTALS.mom.candidateOrigin}/`;
 export const MOM_SIGN_IN_PATH = `${MOM_PATH}/sign-in`;
 export const MOM_APPLY_PATH = `${MOM_PATH}/apply`;
 
@@ -13,7 +16,6 @@ export const MOM_LOA_PATH = `${MOM_PATH}/authorise`;
 
 export type MomFlowPath =
   | typeof MOM_LOA_PATH
-  | typeof MOM_REGISTER_PATH
   | typeof MOM_SIGN_IN_PATH
   | typeof MOM_APPLY_PATH
   | typeof MOM_ORG_PATH

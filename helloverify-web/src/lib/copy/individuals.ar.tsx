@@ -380,9 +380,6 @@ export const ar: IndividualsCopy = {
       logos: {
         latvia: "سفارة لاتفيا",
         italy: "سفارة إيطاليا",
-        britain: "المفوضية البريطانية العليا",
-        switzerland: "سفارة سويسرا",
-        zambia: "هيئة مؤهلات زامبيا",
       },
     },
     guide: {

@@ -1,7 +1,7 @@
 /** Ministry of Manpower — `ministryOfManpower.base.json` hero + screening.
  *  Tab labels, then every panel (overview, track, COMPASS, pricing,
- *  resources, FAQs). Hidden panels stay in the document. "Start
- *  Verification" goes to the applicant flow's register page. */
+ *  resources, FAQs). Hidden panels stay in the document. The applicant
+ *  "Start Verification" opens the Singapore applicant portal. */
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
