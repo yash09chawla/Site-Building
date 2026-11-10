@@ -9,7 +9,6 @@ import { IntlSelect } from "@/components/international/IntlSelect";
 import { IntlSummary, type SummaryCopy } from "@/components/international/IntlSummary";
 import {
   currencyOf,
-  enquiryHref,
   formatMoney,
   INTL_CHECKS,
   intlOptions,
@@ -19,6 +18,7 @@ import {
   type IntlCheck,
 } from "@/lib/international/catalog";
 import { daysOf, localPrice, priceOf, quoteOf, sizeOf, type Delivery } from "@/lib/international/order";
+import { gatewayHref, offeredChecks } from "@/lib/intlcase/offered";
 
 type SortKey = "name" | "price" | "tat";
 const SORTS: readonly SortKey[] = ["name", "price", "tat"];
@@ -40,14 +40,15 @@ type ChecksProps = {
   summary: SummaryCopy;
 };
 
-/** The check builder. Pick a country, tick checks, and the summary beside
- *  the list adds up the price and the longest turnaround; its one CTA goes
- *  to the enquiry form. Default country is the CMS `US`. Names, prices and
- *  turnarounds are the ops catalog, so they are audit-skipped — the CMS
- *  rows are rendered separately by the page. Prices show in the country's
- *  currency, with the high-risk fee already in them (`lib/international/order`).
- *  Changing country keeps every ticked check the new one offers (matched by
- *  name) and says which were dropped. */
+/** The check builder. Every country offers the same four checks. Pick a
+ *  country, tick checks, and the summary beside the list adds up the price
+ *  and the longest turnaround. Its CTA opens the request gateway. Default
+ *  country is the CMS `US`. Names, prices and turnarounds are the ops
+ *  catalog, so they are audit-skipped — the CMS rows are rendered separately
+ *  by the page. Prices show in the country's currency, with the high-risk
+ *  fee already in them (`lib/international/order`). Changing country keeps
+ *  every ticked check the new one offers (matched by name) and says which
+ *  were dropped. */
 export function IntlChecks({
   locale,
   initialCode,
@@ -76,12 +77,14 @@ export function IntlChecks({
   const options = intlOptions(countries, "checks");
   const country = options.find((o) => o.code === code);
   const cur = currencyOf(code);
-  const rows = INTL_CHECKS[code] ?? [];
+  const rows = offeredChecks(code);
   const sorted = sortKey ? [...rows].sort((a, b) => compare(a, b, sortKey, sortDir)) : rows;
   const maxDays = Math.max(0, ...rows.map(daysOf).filter(Number.isFinite));
   const picked = rows.filter((r) => checked.has(r.id));
   const quote = quoteOf(code, picked, fast, delivery);
-  const href = enquiryHref(locale) + (quote.rushOn ? "&rush=1" : "") + (quote.together ? "&delivery=together" : "");
+  const href = picked.length
+    ? gatewayHref(locale, code, picked.map((r) => r.key), quote.rushOn, quote.together ? "together" : "each")
+    : `#${sumId}`;
   const totalLabel = formatMoney(quote.total, cur);
   const countLabel = summary.count.replace("{{count}}", String(picked.length));
 
@@ -94,7 +97,7 @@ export function IntlChecks({
 
   const pickCountry = (next: string) => {
     if (next === code) return;
-    const offered = new Map((INTL_CHECKS[next] ?? []).map((r) => [r.name, r.id]));
+    const offered = new Map(offeredChecks(next).map((r) => [r.name, r.id]));
     const kept = picked.flatMap((r) => offered.get(r.name) ?? []);
     setCode(next);
     setChecked(new Set(kept));

@@ -150,7 +150,7 @@ const sitemapPaths = new Set(
 
 const pageFiles = await htmlPages(root);
 /** Gated account shells — prerendered, noindex, not in the sitemap. */
-const ACCOUNT_PAGE = /^\/[a-z]{2}\/(cart|orders|orders\/candidate|orders\/smb-candidates|profile-settings|products\/hellov\/verify\/(?:driver|home-staff|nanny|tenant)|solutions\/manpower-and-education-authorities\/ministry-of-manpower\/(?:sign-in|apply|authorise|employers(?:\/register|\/sign-in)?)|governments\/immigration\/embassy-of-italy\/partners(?:\/join|\/sign-in)?)$/;
+const ACCOUNT_PAGE = /^\/[a-z]{2}\/(cart|orders|orders\/candidate|orders\/smb-candidates|profile-settings|international\/(?:request|sign-in|dashboard)|products\/hellov\/verify\/(?:driver|home-staff|nanny|tenant)|solutions\/manpower-and-education-authorities\/ministry-of-manpower\/(?:sign-in|apply|authorise|employers(?:\/register|\/sign-in)?)|governments\/immigration\/embassy-of-italy\/partners(?:\/join|\/sign-in)?)$/;
 /** The per-page decisions below are written once, against `/en`; `hi` and
  *  `ar` render the same templates, so they inherit the English row. */
 const asEn = (path) => path.replace(/^\/[a-z]{2}(?=\/|$)/, "/en");

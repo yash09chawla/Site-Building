@@ -18,6 +18,7 @@
 import { getLocale } from "next-intl/server";
 
 import { NavAuth } from "@/components/auth/NavAuth";
+import { IntlProfileMenu } from "@/components/intlcase/IntlProfileMenu";
 import { Logo } from "@/components/brand/Logo";
 import { AppLink } from "@/components/chrome/AppLink";
 import { HELLOSTAFF_HOME, HELLOSTAFF_LIVE } from "@/lib/hellostaff/live";
@@ -173,6 +174,7 @@ export async function SiteNav({ showSignUp = true }: { showSignUp?: boolean } = 
         <div className="acts">
           {/* `LocaleSwitch` turns into a real switcher on one array entry — see its header. */}
           <LocaleSwitch />
+          <IntlProfileMenu locale={locale} placement="bar" />
           <NavAuth {...auth} placement="bar" />
           <AppLink href={ENQUIRY} className="btn btn-ink btn-sm">{t.cta}</AppLink>
           {/* Real text, not `aria-label`: a <label> has no role that permits
@@ -220,6 +222,7 @@ export async function SiteNav({ showSignUp = true }: { showSignUp?: boolean } = 
           </div>
         </details>
         <AppLink href="/technology" className="nv-ml"><span>{t.technology}</span><span className="k">→</span></AppLink>
+        <IntlProfileMenu locale={locale} placement="menu" />
         <NavAuth {...auth} placement="menu" />
         <LocaleSwitch />
       </nav>

@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 import { localise } from "@/lib/i18n/href";
 import type { ChromeCopy } from "@/lib/copy/chrome";
 
@@ -29,6 +31,7 @@ export function NavAuth({
 }) {
   const { isLoggedIn, user, openLogin, logout } = useAuth();
   const name = user?.name?.trim() || account;
+  const intl = /\/international(\/|$)/.test(usePathname() ?? "");
 
   const links = [
     { href: "/cart", label: userMenu.myCart },
@@ -37,7 +40,7 @@ export function NavAuth({
   ] as const;
 
   if (!isLoggedIn) {
-    if (!showSignUp) return null;
+    if (!showSignUp || intl) return null;
     if (placement === "bar") {
       return (
         <button type="button" className="btn btn-line btn-sm nv-signup" onClick={() => openLogin()}>

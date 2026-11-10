@@ -102,6 +102,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.nav2 .nv-profile-sum { width: 40px; padding: 0; justify-content: center; border-radius: 50%; }
 .nav2 .nv-user-sum::-webkit-details-marker, .nav2 .nv-user-sum::marker { display: none; content: none; }
 .nav2 .nv-user-list {
   position: absolute;

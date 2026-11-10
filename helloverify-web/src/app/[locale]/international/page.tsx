@@ -1,9 +1,7 @@
-/** /international — the old SPA's International Checks page
- *  (`international.base.json`). Packages show the CMS's United Kingdom
- *  bundle; the country picker is the check builder's. The builder is the live
- *  catalog (default United States) with a running summary. The CMS check
- *  rows stay in the document so that copy is still on the page. Buy Now and
- *  the summary's CTA go to the CMS link, `/contact?tab=enquiry`. */
+/** /international — country picker for the four international checks
+ *  (education, employment, global database, passport). The summary opens
+ *  `/international/request`. Package cards still go to the enquiry form.
+ *  The CMS check rows stay in the document so that copy is still on the page. */
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { pageMetadata } from "@/lib/seo/metadata";
